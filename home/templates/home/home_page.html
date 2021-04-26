@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block content %}
+
+<div id="body">
+  {{ page.body|richtext }}
+</div>
+
+{% for item in page.image_panels %}
+  <div class="image-panel">
+    <div style="float: left; margin: 10px">
+      {% image item.value.photo fill-320x240 %}
+      <div class="rich-text image-panel__text">
+        {{ item.value.text|richtext }}
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock content %}
